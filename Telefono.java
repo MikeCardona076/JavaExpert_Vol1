@@ -8,7 +8,7 @@ public class Telefono extends AgendaTelefonica{
     static Scanner nuevotelefono = new Scanner(System.in);
     static AgendaTelefonica nuevousuario;
     static int eleccion;
-    static String nombre, telefono, buscar_nombre;
+    static String nombre, telefono, buscar_nombre, eliminar_nombre;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -16,7 +16,10 @@ public class Telefono extends AgendaTelefonica{
 			
 			System.out.println("Escoge una opción: " +
 					"\n 1. Agregar contacto " +
-				    "\n 2. Buscar contacto");
+				    "\n 2. Buscar contacto" +
+				    "\n 3. Eliminar contacto" +
+				    "\n 4. Eliminar agenda" +
+				    "\n 5. Salir" );
 					
 					eleccion = nuevotelefono.nextInt();
 					nuevotelefono.nextLine();
@@ -27,9 +30,17 @@ public class Telefono extends AgendaTelefonica{
 					if(eleccion == 2) {
 						BuscarTelefono();
 					}
+					if(eleccion == 3) {
+						EliminarTelefono();
+					}
+					if(eleccion == 4) {
+						EliminarAgenda();
+					}
+					
+					
 					
 		}
-		while(eleccion != 3);
+		while(eleccion != 5);
 
 
 	}
@@ -63,6 +74,23 @@ public class Telefono extends AgendaTelefonica{
         System.out.println("Buscar contacto: ");
         buscar_nombre = nuevotelefono.nextLine();
         System.out.println(agenda.get(buscar_nombre));
+		
+	}
+	
+	public static void EliminarTelefono(){
+		System.out.println(agenda);
+        System.out.println("Eliminar contacto: ");
+        eliminar_nombre = nuevotelefono.nextLine();
+        System.out.println(agenda.remove(eliminar_nombre));
+        System.out.println(agenda);
+		
+	}
+	
+	public static void EliminarAgenda(){
+		System.out.println(agenda);
+        agenda.clear();
+        System.out.println("La agenda se eliminó: ");
+        System.out.println(agenda);
 		
 	}
 
